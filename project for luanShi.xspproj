@@ -1,0 +1,10 @@
+[RES]
+size=0
+
+[SOURCE]
+1\SOURCEFILE=/Users/a123/Documents/xspworkspace/project for luanShi/xsp/src/main.lua
+size=1
+
+[UI]
+1\UIFILE=/Users/a123/Documents/xspworkspace/project for luanShi/xsp/ui/ui.json
+size=1
