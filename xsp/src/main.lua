@@ -1,4 +1,5 @@
 --config
+ERROR_CODE = 108
 chu_zheng = 0
 -- init
 STEP_chu_zheng = 0
@@ -28,25 +29,30 @@ function func_open_zong_lan()
 	else
 	click(38,1028)
 	end
-	return 1
+	STEP_chu_zheng = 1
 end
 
 function func_click_chu_zheng()
 	x, y = findColorInRegionFuzzy(0x248ed3, 80, 0, 0, 1241, 2207, 0, 0)
 	if x > -1 then
 	--队列一
+	STEP_chu_zheng = 2
 	else
 		x, y = findColorInRegionFuzzy(0x248ed3, 80, 0, 0, 1241, 2207, 0, 0)
 		if x > -1 then
 		--队列二
+		STEP_chu_zheng = 2
 		else
 		--移动两次后寻找队列三
 			move(0,0,0,0,0,0)
 			move(0,0,0,0,0,0)
 			x, y = findColorInRegionFuzzy(0x248ed3, 80, 0, 0, 1241, 2207, 0, 0)
 			if x > -1 then
-			--队列三
+				--队列三
+				STEP_chu_zheng = 2
 			else
+				--nothing
+				STEP_chu_zheng = ERROR_CODE
 			end
 		end
 	end
@@ -55,12 +61,17 @@ end
 function func_chu_zheng()
 	mSleep(500)
 	if(STEP_chu_zheng == 0) then
-		STEP_chu_zheng = STEP_chu_zheng + func_open_zong_lan()
+		--打开总览
+		func_open_zong_lan()
 		func_chu_zheng()
 	elseif(STEP_chu_zheng == 1) then
-	-- 找出征蓝色按钮
-		STEP_chu_zheng = STEP_chu_zheng + func_click_chu_zheng()
+		--找出征蓝色按钮
+		func_click_chu_zheng()
 		func_chu_zheng()
+	elseif(STEP_chu_zheng == 2) then
+		--采矿
+	elseif(STEP_chu_zheng == ERROR_CODE) then
+	--无空余队列
 	else
 	end
 	xylog(x,y)
