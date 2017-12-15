@@ -13,7 +13,7 @@ function func_ji_si_qian_wang()
 	if x > -1 then
 	util.hudToast("点击前往祭祀")
 		util.click(util.qianWangXposCenter,y)
-		mSleep(1500)--移动视角需要一段时间
+		util.mySleep(1500)--移动视角需要一段时间
 		STEP_ji_si = 2
 	else
 	util.hudToast("当前不可免费祭祀")
@@ -45,7 +45,7 @@ end
 function func_choose_resource()
 	local currentResource = _G["CONFIG_ji_si_qing_xiang"]
 	util.click(ji_si_resource_xPos[currentResource],ji_si_resource_yPos[currentResource])
-	mSleep(500)
+	util.mySleep(500)
 	if func_ji_si_detect_alert() then
 		STEP_ji_si = util.ERROR_CODE
 		util.click(334,1290)
@@ -55,7 +55,7 @@ function func_choose_resource()
 end
 
 function jisi.func_ji_si()
-mSleep(500)
+util.mySleep(500)
 	if STEP_ji_si == 0 then
 		public.func_open_zong_lan()
 		STEP_ji_si = 1

@@ -24,7 +24,7 @@ function func_zhao_bing_search_qian_wang()
 			STEP_zao_bing = 2
 			util.hudToast("点击前往"..titles[TIMES_search_qian_wang])
 			TIMES_search_qian_wang = 1
-			mSleep(1500)
+			util.mySleep(1500)
 			return 0
 		else
 			TIMES_search_qian_wang = TIMES_search_qian_wang + 1
@@ -40,9 +40,10 @@ end
 
 function func_click_bing_ying()
 		x, y = findColorInRegionFuzzy(0x30e619, 99, bing_ying_xPos1[_G["current_device"]], bing_ying_yPos1[_G["current_device"]], bing_ying_xPos2[_G["current_device"]], bing_ying_yPos2[_G["current_device"]], 0, 0)
+--		util.xylog(x,y)
 		if x > -1 then
 			util.click(bing_ying_center_x[_G["current_device"]],bing_ying_center_y[_G["current_device"]])
-			mSleep(500)
+			util.mySleep(500)
 		end
 		util.click(bing_ying_center_x[_G["current_device"]],bing_ying_center_y[_G["current_device"]])
 		STEP_zao_bing = 3
@@ -50,13 +51,13 @@ end
 
 function func_click_xun_lian()
 	util.click(694,1278)
-	mSleep(500)
+	util.mySleep(500)
 	STEP_zao_bing = 4
 end
 
 function func_click_blue_xun_lian()
 	util.click(936,2073)
-	mSleep(500)
+	util.mySleep(500)
 	STEP_zao_bing = 5
 end
 
@@ -66,9 +67,9 @@ function func_zhao_bing_detect_alert()
 		if x > -1 and x1 > -1 then
 			--有弹窗
 			util.click(331,1293)
-			mSleep(500)
+			util.mySleep(500)
 			util.closeMenuIfNecessary()
-			mSleep(500)
+			util.mySleep(500)
 			STEP_zao_bing = util.ERROR_CODE
 		else
 			x, y = findColorInRegionFuzzy(0xad9251, 99, 432, 1243, 808, 1338, 0, 0)
@@ -76,9 +77,9 @@ function func_zhao_bing_detect_alert()
 			if x > -1 and x1 > -1 then
 				--有弹窗
 				util.clickBottomSpace()
-				mSleep(500)
+				util.mySleep(500)
 				util.closeMenuIfNecessary()
-				mSleep(500)
+				util.mySleep(500)
 				STEP_zao_bing = util.ERROR_CODE
 			else
 				STEP_zao_bing = util.ERROR_CODE
@@ -87,7 +88,7 @@ function func_zhao_bing_detect_alert()
 end
 
 function zaobing.func_zao_bing()
-mSleep(500)
+util.mySleep(500)
 	if STEP_zao_bing == 0 then
 		public.func_open_zong_lan()
 		util.hudToast("开始造兵")

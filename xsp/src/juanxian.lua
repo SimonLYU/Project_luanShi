@@ -10,7 +10,7 @@ function func_juan_xian_qian_wang()
 	if x > -1 then
 	util.hudToast("点击前往联盟捐献")
 		util.click(util.qianWangXposCenter,y)
---		mSleep(1500)--移动视角需要一段时间
+--		util.mySleep(1500)--移动视角需要一段时间
 		STEP_juan_xian = 2
 	else
 		util.hudToast("当前无需联盟捐献")
@@ -50,7 +50,7 @@ function func_click_juan_xian()
 	if x > -1 then
 		util.hudToast("点击捐献")
 		util.click(923,1520)
-		mSleep(500)
+		util.mySleep(500)
 	else
 		util.hudToast("科技升级中")
 		util.clickBottomSpace()
@@ -80,7 +80,7 @@ function func_click_juan_xian()
 end
 
 function juanxian.func_juan_xian()
-	mSleep(500)
+	util.mySleep(500)
 	if STEP_juan_xian == 0 then
 		public.func_open_zong_lan()
 		STEP_juan_xian = 1

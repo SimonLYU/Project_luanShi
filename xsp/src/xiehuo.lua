@@ -18,7 +18,7 @@ function func_click_xie_huo_button()
 end
 
 function func_click_ship()
-	mSleep(1000)--系统自动移动视角的时候需要一定的时间
+	util.mySleep(1000)--系统自动移动视角的时候需要一定的时间
 	util.click(648,1100)
 	xiehuo.STEP_xie_huo = 3
 end
@@ -29,7 +29,7 @@ function func_xie_huo_click_confirm()
 end
 
 function xiehuo.func_xie_huo()
-	mSleep(500)
+	util.mySleep(500)
 	if(xiehuo.STEP_xie_huo == 0) then
 		--打开总览
 		public.func_open_zong_lan()

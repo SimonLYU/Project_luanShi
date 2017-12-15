@@ -515,7 +515,7 @@ function main()
 			util.closeMenuIfNecessary()
 			attack.func_detectAttack()
 		end
-		mSleep(500)
+		util.mySleep(500)
 	until(false)
 end
 main()

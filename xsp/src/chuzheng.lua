@@ -18,7 +18,7 @@ function func_click_chu_zheng()
 	util.click(x,y)
 	chuzheng.STEP_chu_zheng = 2
 	util.hudToast("点击队列"..currentDuiLie)
-	mSleep(500)
+	util.mySleep(2000)
 	return 0
 	else
 		x, y = findColorInRegionFuzzy(0x1d72b5, 80, 750, 1715, 870, 1755, 0, 0)
@@ -27,7 +27,7 @@ function func_click_chu_zheng()
 			util.click(x,y)
 			chuzheng.STEP_chu_zheng = 2
 			util.hudToast("点击队列"..currentDuiLie)
-			mSleep(500)
+			util.mySleep(2000)
 			return 0
 		else
 			--移动两次后寻找队列三和四
@@ -38,7 +38,7 @@ function func_click_chu_zheng()
 				util.click(x,y)
 				chuzheng.STEP_chu_zheng = 2
 				util.hudToast("点击队列"..currentDuiLie)
-				mSleep(500)
+				util.mySleep(2000)
 				return 0
 			else
 				x, y = findColorInRegionFuzzy(0x248ed3, 80, 750, 537, 870, 590, 0, 0)
@@ -47,7 +47,7 @@ function func_click_chu_zheng()
 					util.click(x,y)
 					chuzheng.STEP_chu_zheng = 2
 					util.hudToast("点击队列"..currentDuiLie)
-					mSleep(500)
+					util.mySleep(2000)
 					return 0
 				else
 					x, y = findColorInRegionFuzzy(0x248ed3, 80, 750, 470, 870, 500, 0, 0)
@@ -56,7 +56,7 @@ function func_click_chu_zheng()
 						util.click(x,y)
 						chuzheng.STEP_chu_zheng = 2
 						util.hudToast("点击队列"..currentDuiLie)
-						mSleep(500)
+						util.mySleep(2000)
 						return 0
 					else
 						--nothing
@@ -71,11 +71,15 @@ function func_click_chu_zheng()
 end
 
 function search_bar_is_shown()--返回值0表示正常,1表示异常在城外,2表示异常在城内
+--todo
 	x1, y1 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
 	x, y = findColorInRegionFuzzy(0xfff2b5, 99, 140, 1920, 210, 1980, 0, 0)
 	x2, y2 = findColorInRegionFuzzy(0xfff0a9, 99, 753, 1920, 825, 1980, 0, 0)
 	x3, y3 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
 	x4, y4 = findColorInRegionFuzzy(0x248ad3, 99, 444, 2096, 794, 2175, 0, 0)
+--	util.xylog(x,x1)
+--		util.xylog(x2,x3)
+--			util.xylog(x4,000)
 	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 then--如果发现这些特征,那么不该继续去搜索了
 		return 0
 	else
@@ -88,12 +92,12 @@ function search_bar_is_shown()--返回值0表示正常,1表示异常在城外,2�
 end
 
 function func_search_resource_iron()
-	mSleep(500)
+	util.mySleep(500)
 	if STEP_search_resource == 0 then
 		--touch search
 		util.hudToast("点击搜索")
 		util.click(1003,1837)
-		mSleep(500)
+		util.mySleep(500)
 		STEP_search_resource = 1
 		func_search_resource_iron()
 		return 0
@@ -132,7 +136,7 @@ function func_search_resource_iron()
 			end
 		end
 		util.click(xPos,resource_y_position)
-		mSleep(500)
+		util.mySleep(500)
 		STEP_search_resource = 2
 		util.hudToast("选择资源")
 		func_search_resource_iron()
@@ -152,14 +156,16 @@ function func_search_resource_iron()
 		util.hudToast("重置等级")
 		if NEED_research == 1 then
 			--touch -
+
 			for i=1,max_level,1 do
 				util.click(176,1946)
-				mSleep(50)
+				util.mySleep(50)
 			end
 			--touch +
+
 			for i=1,search_level,1 do
 				util.click(791,1946)
-				mSleep(50)
+				util.mySleep(50)
 			end
 		end
 		STEP_search_resource = 3
@@ -167,9 +173,10 @@ function func_search_resource_iron()
 		return 0
 	elseif STEP_search_resource == 3 then
 		--touch blue search
+
 		util.hudToast("开始寻找")
 		util.click(618,2131)
-		mSleep(1000)
+		util.mySleep(1000)
 		STEP_search_resource = 4
 		func_search_resource_iron()
 		return 0
@@ -197,11 +204,13 @@ function func_search_resource_iron()
 		end
 	elseif STEP_search_resource == 5 then
 		--touch center resource
+
 		util.hudToast("点击找到的资源")
 		util.click(626,1086)
-		mSleep(1000)
+		util.mySleep(1000)
 		if public.func_get_current_chu_zheng_config() == 0 then
 			STEP_search_resource = 10 --打怪
+
 		else
 			STEP_search_resource = 6
 		end
@@ -218,7 +227,7 @@ function func_search_resource_iron()
 
 		util.click(900,1080)
 		util.hudToast("点击占领")
-		mSleep(200)
+		util.mySleep(200)
 		STEP_search_resource = 7
 		func_search_resource_iron()
 		return 0
@@ -227,7 +236,7 @@ function func_search_resource_iron()
 
 		util.click(968,2110)
 		util.hudToast("点击出征")
-		mSleep(200)
+		util.mySleep(200)
 		STEP_search_resource = 8
 		func_search_resource_iron()
 		return 0
@@ -252,9 +261,9 @@ function func_search_resource_iron()
 			x1, y1 = findColorInRegionFuzzy(0x1b1a1d, 99, 152, 1134, 507, 1216, 0, 0)
 			if (x > -1 and x1 > -1) then--重复行军弹窗
 				util.click(616,1286)
-				mSleep(200)
+				util.mySleep(200)
 				util.click(104,157)
-				mSleep(500)
+				util.mySleep(500)
 				NEED_research = 0
 				STEP_search_resource = 0
 				util.hudToast("重复行军，重新查找")
@@ -265,9 +274,10 @@ function func_search_resource_iron()
 				x1, y1 = findColorInRegionFuzzy(0x234259, 99, 328, 2063, 693, 2151, 0, 0)
 				x2, y2 = findColorInRegionFuzzy(0x494229, 99, 796, 2056, 1159, 2154, 0, 0)
 				if x > -1 and x1 > -1 and x2 > -1 then--体力不足
+
 					util.hudToast("体力不足,停止进攻")
 					util.clickBottomSpace()
-					mSleep(500)
+					util.mySleep(500)
 					util.closeMenuIfNecessary()
 					STEP_search_resource = 9
 					func_search_resource_iron()
@@ -287,7 +297,7 @@ function func_search_resource_iron()
 		util.click(125,2125)--回城
 		util.hudToast("点击回城")
 		STEP_search_resource = util.ERROR_CODE
-		mSleep(2500)
+		util.mySleep(2500)
 	elseif STEP_search_resource == util.ERROR_CODE then
 	end
 	STEP_search_resource = 0
@@ -299,7 +309,7 @@ end
 function chuzheng.func_chu_zheng()
 	max_level = _G["CONFIG_max_level"]
 	search_level = _G["CONFIG_search_level"] 
-	mSleep(500)
+	util.mySleep(1000)
 	if(chuzheng.STEP_chu_zheng == 0) then
 		--打开总览
 		public.func_open_zong_lan()
@@ -314,11 +324,13 @@ function chuzheng.func_chu_zheng()
 		return 0
 	elseif(chuzheng.STEP_chu_zheng == 2) then
 		--采矿
+
 		func_search_resource_iron()
 		chuzheng.func_chu_zheng()
 		return 0
 	elseif(chuzheng.STEP_chu_zheng == util.ERROR_CODE) then
 	end
+		
 	public.func_close_zong_lan()
 	chuzheng.STEP_chu_zheng = 0
 end

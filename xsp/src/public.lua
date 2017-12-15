@@ -3,9 +3,9 @@ require("attack")
 public = {}
 
 function public.func_close_zong_lan()
-	x, y = findColorInRegionFuzzy(0x171a1d, 99, 20, 1000, 70, 1130, 0, 0)
+	x, y = findColorInRegionFuzzy(0x171a1d, 90, 20, 1000, 70, 1130, 0, 0)
 	if x > -1 then
-		util.click(1021,1092)
+		util.click(1142,1092)
 		return 0
 	end
 end
@@ -14,7 +14,7 @@ function public.func_open_zong_lan()
 	--初始化,关掉菜单,进入城内
 	public.func_start_init()
 	--打开总览
-	x, y = findColorInRegionFuzzy(0x171a1d, 99, 20, 1000, 70, 1130, 0, 0)
+	x, y = findColorInRegionFuzzy(0x171a1d, 90, 20, 1000, 70, 1130, 0, 0)
 	if x > -1 then
 		util.clickBottomSpace()
 		public.func_open_zong_lan()
@@ -48,7 +48,7 @@ function public.close_invate_alert_if_needed()
 	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 and x5 > -1 then
 		util.hudToast("检测到好友邀请弹窗!已关闭!")
 		util.click(1111,341)
-		mSleep(300)
+		util.mySleep(300)
 		return true
 	else
 		return false
@@ -66,7 +66,7 @@ function public.close_fu_dai_rain_alert_if_needed()
 	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 and x5 > -1 and x6 > -1 then
 		util.hudToast("检测到天降福袋雨弹窗!已关闭!")
 		util.click(1066,641)
-		mSleep(300)
+		util.mySleep(300)
 		return true
 	else
 		return false
@@ -82,7 +82,7 @@ function public.retry_internet_connect_if_needed()
 	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 then
 		util.hudToast("网络连接不稳定,正在帮主人重试")
 		util.click(912,1294)
-		mSleep(300)
+		util.mySleep(300)
 		return true
 	else
 		return false
@@ -94,7 +94,7 @@ function public.func_start_init()
 	if public.func_detect_out_of_city() then--在城郊
 		util.hudToast("点击回城")
 		util.click(125,2125)--回城
-		mSleep(2000)
+		util.mySleep(2500)
 	end
 	--先关掉菜单
 	util.closeMenuIfNecessary()
@@ -107,13 +107,13 @@ function public.func_start_init()
 	--检测是否被打
 	if public.should_detect_attack() then
 		attack.func_detectAttack()
-		mSleep(500)
+		util.mySleep(500)
 	end
-		--再检查一次是否在城外(在城外被攻击的时候,闪烁的红色会影响城外的判断,所以等被打检测结束之后再做一次城外检测)
+	--再检查一次是否在城外(在城外被攻击的时候,闪烁的红色会影响城外的判断,所以等被打检测结束之后再做一次城外检测)
 	if public.func_detect_out_of_city() then--在城郊
 		util.hudToast("点击回城")
 		util.click(125,2125)--回城
-		mSleep(2000)
+		util.mySleep(2000)
 	end
 end
 

@@ -20,7 +20,7 @@ end
 
 function func_lie_biao_search()
 	util.click(292,275)
-	mSleep(500)
+	util.mySleep(500)
 	x, y = findColorInRegionFuzzy(0x2899d6, 80, 884, 862, 1118, 925, 0, 0)
 	if x > -1 then
 		util.hudToast("挖掘免费宝藏")
@@ -33,12 +33,12 @@ end
 
 function func_my_bao_zang_search()
 	util.click(638,275)
-	mSleep(500)
+	util.mySleep(500)
 	x, y = findColorInRegionFuzzy(0xa98f4e, 80, 885, 860, 1118, 925, 0, 0)
 	if x > -1 then
 		util.hudToast("收获宝藏")
 		util.click(x,y)
-		mSleep(500)
+		util.mySleep(500)
 	else
 		util.hudToast("无可收获宝藏")
 	end
@@ -57,9 +57,9 @@ end
 
 function func_help_lie_biao_search()
 	util.click(929,275)
-	mSleep(500)
+	util.mySleep(500)
 	util.click(1000,894)
-	mSleep(500)
+	util.mySleep(500)
 	if func_detect_help_alert() then
 		util.hudToast("没有可以免费帮助的盟友")
 		util.clickBottomSpace()
@@ -73,7 +73,7 @@ function func_help_lie_biao_search()
 end
 
 function bangzhu.func_bang_zhu()
-mSleep(500)
+util.mySleep(500)
 	if STEP_bang_zhu == 0 then
 		--打开总览
 		public.func_open_zong_lan()

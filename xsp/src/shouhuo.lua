@@ -10,29 +10,29 @@ every_resource_yPos = {427,774,383,930,521,801,638,957,652,1257}
 function fucn_pull_to_zuo_xia()
 	util.hudToast("出城")
 	util.click(125,2125)--回城
-	mSleep(3000)
+	util.mySleep(3000)
 	util.hudToast("回城")
 	util.click(125,2125)--回城
-	mSleep(3000)
+	util.mySleep(3000)
 	--左
 	util.hudToast("屏幕定位到城内左下角")
 	for i = 1,3,1 do
 		util.move(260,1290,930,1290)
-		mSleep(200)
+		util.mySleep(200)
 		util.move(260,1530,930,1530)
-		mSleep(200)
+		util.mySleep(200)
 		util.move(260,800,930,800)
-		mSleep(200)
+		util.mySleep(200)
 	end
-	mSleep(500)
+	util.mySleep(500)
 	--下
 	for i = 1,3,1 do
 		util.move(300,1600,300,500)
-		mSleep(200)
+		util.mySleep(200)
 		util.move(600,1600,600,500)
-		mSleep(200)
+		util.mySleep(200)
 		util.move(900,1600,900,500)
-		mSleep(200)
+		util.mySleep(200)
 	end
 	STEP_shou_huo = 2
 end
@@ -41,12 +41,12 @@ function func_click_every_resource()
 	util.hudToast("依次收取城内左下角所有资源")
 	for i=1,10,1 do
 		util.click(every_resource_xPos[i],every_resource_yPos[i])
-		mSleep(200)
+		util.mySleep(200)
 	end	STEP_shou_huo = util.ERROR_CODE
 end
 
 function shouhuo.func_shou_huo()
-	mSleep(500)
+	util.mySleep(500)
 	if STEP_shou_huo == 0 then
 		--初始化,关掉菜单,进入城内
 		public.func_start_init()

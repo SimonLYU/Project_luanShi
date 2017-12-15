@@ -17,22 +17,22 @@ hud_text_font_size = 35
 -- 点击手势
 function util.click(x,y)
 	touchDown(1, x, y); 
-	mSleep(150);
+	util.mySleep(150);
 	touchUp(1, x, y); 
 end
 
 function util.move(fromX,fromY,toX,toY)
 	touchDown(1, fromX, fromY); 
-	mSleep(50)
+	util.mySleep(50)
 	touchMove(1, toX, toY)
-	mSleep(50)
+	util.mySleep(50)
 	touchUp(1, toX, toY); 
 end
 
 function util.clickBottomSpace()
 	width,height = getScreenSize()
 	util.click((width * 0.5),2108)
-	mSleep(500)
+	util.mySleep(500)
 end
 
 function util.xylog(x,y)
@@ -41,7 +41,11 @@ end
 
 function util.pullMenuToBottom()
 	util.move(250,1500,250,600)
-	mSleep(1000)
+	util.mySleep(2000)
+--	util.move(130,1600,130,500)
+--	util.mySleep(500)
+--	util.move(130,1600,130,500)
+--	util.mySleep(500)
 end
 
 function util.closeMenuIfNecessary()
@@ -50,7 +54,7 @@ function util.closeMenuIfNecessary()
 	if x > -1 and x1 <= -1 then
 		util.click(x,y)
 		util.hudToast("关闭子菜单")
-		mSleep(500)
+		util.mySleep(500)
 		util.closeMenuIfNecessary()
 		return 0
 	else
@@ -100,6 +104,10 @@ end
 function util.hudToast(toastInfo)
 	screen_width,screen_height = getScreenSize()
 	showHUD(my_hud_id,toastInfo,hud_text_font_size,hud_text_color,hud_background_color,2,0,screen_height  * (1 - 0.195),screen_width * 0.7,screen_height  * 0.055)  
+end
+
+function util.mySleep(sleepTime)
+	mSleep(sleepTime * 1.75)
 end
 
 return util

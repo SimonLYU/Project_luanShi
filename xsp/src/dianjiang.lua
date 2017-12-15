@@ -24,7 +24,7 @@ function func_click_dian_jiang_button()
 	end
 end
 
-function func_detect_mian_fei_alert()--次函数已废弃(无需检测,能进到此界面就一定有免费次数,不存在不足的情况)
+function func_detect_mian_fei_alert()
 	x, y = findColorInRegionFuzzy(0x288dd0, 99, 196, 1133, 469, 1200, 0, 0)
 	x, y = findColorInRegionFuzzy(	0xa9904d, 99, 763, 1133, 1039, 1200, 0, 0)
 	if x > -1 and x1 > -1 then
@@ -48,7 +48,8 @@ function func_click_wu_jiang()
 		util.click(335,1070)
 		dianjiang.STEP_dian_jiang = 4
 		util.hudToast("点击招募武将")
-		mSleep(1500)--弹窗需要一段时间
+--		func_detect_mian_fei_alert()
+		util.mySleep(1500)--弹窗需要一段时间
 	end
 end
 
@@ -61,7 +62,8 @@ function func_click_ji_neng()
 		util.click(355,1785)
 		dianjiang.STEP_dian_jiang = 5
 		util.hudToast("点击研究技能")
-		mSleep(1500)--弹窗需要一段时间
+--		func_detect_mian_fei_alert()
+		util.mySleep(1500)--弹窗需要一段时间
 	end
 end
 
@@ -71,33 +73,33 @@ function func_dian_jiang_detect_he_cheng_alert()
 	else
 		util.hudToast("检测到合成弹窗")
 		util.click(621,1803)
-		mSleep(500)
+		util.mySleep(500)
 		func_dian_jiang_detect_he_cheng_alert()
 	end
 end
 
 --step 4
 function func_confirm_wu_jiang()
-	mSleep(500)
+	util.mySleep(500)
 	util.click(920,1770)
 	util.hudToast("确认武将招募")
-	mSleep(1000)--等待确认弹窗消失后再检测合成弹窗
+	util.mySleep(1000)--等待确认弹窗消失后再检测合成弹窗
 	func_dian_jiang_detect_he_cheng_alert()
 	dianjiang.STEP_dian_jiang = 6
 end
 
 --step 5
 function func_confirm_ji_neng()
-	mSleep(500)
+	util.mySleep(500)
 	util.click(920,1770)
 	util.hudToast("确认购买技能")
-	mSleep(1000)--等待确认弹窗消失再检测合成弹窗
+	util.mySleep(1000)--等待确认弹窗消失再检测合成弹窗
 	func_dian_jiang_detect_he_cheng_alert()
 	dianjiang.STEP_dian_jiang = 7
 end
 
 function dianjiang.func_dian_jiang()
-	mSleep(500)
+	util.mySleep(500)
 	if dianjiang.STEP_dian_jiang == 0 then
 		public.func_open_zong_lan()
 		util.hudToast("开始点将")

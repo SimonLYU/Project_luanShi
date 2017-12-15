@@ -10,7 +10,7 @@ function func_yan_jiu_search_qian_wang()
 	if x > -1 then
 		util.click(816,1459)
 		util.hudToast("点击前往")
-		mSleep(1500)
+		util.mySleep(1500)
 		STEP_yan_jiu = 2
 	else
 		util.hudToast("当前不可研究科技")
@@ -21,14 +21,14 @@ end
 function func_click_tai_shi_yuan()
 	util.click(625,1080)
 	util.hudToast("点击太史院")
-	mSleep(500)
+	util.mySleep(500)
 	STEP_yan_jiu = 3
 end
 
 function func_click_yan_jiu()
 	util.click(700,1277)
 	util.hudToast("点击研究")
-	mSleep(500)
+	util.mySleep(500)
 	STEP_yan_jiu = 4
 end
 
@@ -42,13 +42,13 @@ function func_choose_yan_jiu()
 		util.hudToast("研究战斗倾向")
 	end
 	STEP_yan_jiu = 5	
-	mSleep(500)
+	util.mySleep(500)
 end
 
 function func_yan_jiu_click_confirm()
 	util.click(915,1795)
 	STEP_yan_jiu = 6
-	mSleep(500)
+	util.mySleep(500)
 end
 
 function func_yan_jiu_detect_alert()
@@ -61,9 +61,9 @@ function func_yan_jiu_detect_alert()
 		util.hudToast("资源不足,跳过研究")
 		width,height = getScreenSize()
 		util.click((width * 0.5),100)
-		mSleep(500)
+		util.mySleep(500)
 		util.click((width * 0.5),100)
-		mSleep(500)
+		util.mySleep(500)
 	else
 		util.hudToast("研究结束,关闭界面")
 	end
@@ -72,7 +72,7 @@ function func_yan_jiu_detect_alert()
 end
 
 function yanjiu.func_yan_jiu()
-mSleep(500)
+util.mySleep(500)
 	if STEP_yan_jiu == 0 then 
 		public.func_open_zong_lan()
 		util.hudToast("开始技能研究")

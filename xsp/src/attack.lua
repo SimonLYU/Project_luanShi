@@ -45,7 +45,7 @@ function subfunc_click_zuo_biao()
 	else
 		--侦查
 		util.click(1128,776)
-		mSleep(200)
+		util.mySleep(200)
 		x, y = findColorInRegionFuzzy(0x314c70, 99, 10, 100, 230, 230, 0, 0)
 		if x > -1 then
 			util.hudToast("此行军为侦查")
@@ -67,7 +67,7 @@ end
 --sub step 2
 function subfunc_click_zeng_yi()
 	util.click(904,1020)--撤军和增益
-	mSleep(500)
+	util.mySleep(500)
 	x, y = findColorInRegionFuzzy(0x314c70, 99, 10, 100, 230, 230, 0, 0)
 	if x > -1 then
 		util.hudToast("准备选择可用免战牌")
@@ -96,20 +96,20 @@ end
 --sub step 4
 function subfunc_choose_zhao()
 	util.click(1011,618)--使用免战牌
-	mSleep(200)
+	util.mySleep(200)
 	x, y = findColorInRegionFuzzy(0x2d8fcc, 90, 139, 1240, 516, 1335, 0, 0)
 	x1, y1 = findColorInRegionFuzzy(0x9c823b, 90, 731, 1240, 1100, 1335, 0, 0)
 	if x > -1 and x1 > -1 then--如果没有免战牌
 		if _G["CONFIG_mian_zhan_pai"] == 0 then
 			util.click(923,1293)--购买
-			mSleep(200)
+			util.mySleep(200)
 			x, y = findColorInRegionFuzzy(0x2d8fcc, 90, 139, 1240, 516, 1335, 0, 0)
 			x1, y1 = findColorInRegionFuzzy(0x9c823b, 90, 731, 1240, 1100, 1335, 0, 0)
 			if x > -1 and x1 > -1 then--金币不足
 				if _G["CONFIG_mian_zhan_pai_yuan_bao"] == 0 then
 					util.hudToast("金币不足元宝补充")
 					util.click(923,1293)--补充
-					mSleep(200)
+					util.mySleep(200)
 					x, y = findColorInRegionFuzzy(0x2d8fcc, 90, 139, 1240, 516, 1335, 0, 0)
 					x1, y1 = findColorInRegionFuzzy(0x9c823b, 90, 731, 1240, 1100, 1335, 0, 0)
 					if x > -1 and x1 > -1 then--元宝不足
@@ -146,7 +146,7 @@ end
 
 --sub step 
 function subfunc_main()
-	mSleep(500)
+	util.mySleep(500)
 	if STEP_sub_attack == 0 then
 		subfunc_click_zuo_biao()
 		subfunc_main()
@@ -175,9 +175,9 @@ end
 
 function lookDetail()	
 	util.click(932,2103)--先全部忽略,免得渐变红色影响判断
-	mSleep(200)
+	util.mySleep(200)
 	util.click(916,1288)
-	mSleep(500)
+	util.mySleep(500)
 	x1, y1 = findColorInRegionFuzzy(0xa57940, 80, search_x1 + search_count *search_space, search_y1 + search_count *search_space, search_x2 + search_count *search_space, search_y2 + search_count *search_space, 0, 0)
 	x, y = findColorInRegionFuzzy(0xfdfbf9, 80, search_x1 + search_count *search_space, search_y1 + search_count *search_space, search_x2 + search_count *search_space, search_y2 + search_count *search_space, 0, 0)
 	if x > -1 and x1 > -1 then
@@ -194,20 +194,20 @@ function moveToZuoShang()
 	util.hudToast("开始检测敌军")
 	--右
 	util.move(930,1290,260,1290)
-	mSleep(200)
+	util.mySleep(200)
 	util.move(930,1290,260,1290)
-	mSleep(200)
+	util.mySleep(200)
 	--下
 	util.move(300,500,300,1600)
-	mSleep(200)
+	util.mySleep(200)
 	util.move(300,500,300,1600)
-	mSleep(200)
+	util.mySleep(200)
 		
 		STEP_attack = 1
 end
 
 function attack.func_detectAttack()
-	mSleep(500)
+	util.mySleep(500)
 	if STEP_attack == 0 then
 	--这里先什么也不做
 		moveToZuoShang()
