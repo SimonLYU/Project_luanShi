@@ -3,7 +3,7 @@ require("attack")
 public = {}
 
 function public.func_close_zong_lan()
-	x, y = findColorInRegionFuzzy(0x171a1d, 90, 20, 1000, 70, 1130, 0, 0)
+	x, y = findColorInRegionFuzzy(0x171a1d, 95, 20, 1000, 70, 1130, 0, 0)
 	if x > -1 then
 		util.click(1142,1092)
 		return 0
@@ -14,7 +14,7 @@ function public.func_open_zong_lan()
 	--初始化,关掉菜单,进入城内
 	public.func_start_init()
 	--打开总览
-	x, y = findColorInRegionFuzzy(0x171a1d, 90, 20, 1000, 70, 1130, 0, 0)
+	x, y = findColorInRegionFuzzy(0x171a1d, 95, 20, 1000, 70, 1130, 0, 0)
 	if x > -1 then
 		util.clickBottomSpace()
 		public.func_open_zong_lan()
