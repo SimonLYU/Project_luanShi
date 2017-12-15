@@ -24,7 +24,7 @@ function func_click_dian_jiang_button()
 	end
 end
 
-function func_detect_mian_fei_alert()
+function func_detect_mian_fei_alert()--次函数已废弃(无需检测,能进到此界面就一定有免费次数,不存在不足的情况)
 	x, y = findColorInRegionFuzzy(0x288dd0, 99, 196, 1133, 469, 1200, 0, 0)
 	x, y = findColorInRegionFuzzy(	0xa9904d, 99, 763, 1133, 1039, 1200, 0, 0)
 	if x > -1 and x1 > -1 then
@@ -48,7 +48,6 @@ function func_click_wu_jiang()
 		util.click(335,1070)
 		dianjiang.STEP_dian_jiang = 4
 		util.hudToast("点击招募武将")
---		func_detect_mian_fei_alert()
 		mSleep(1500)--弹窗需要一段时间
 	end
 end
@@ -62,7 +61,6 @@ function func_click_ji_neng()
 		util.click(355,1785)
 		dianjiang.STEP_dian_jiang = 5
 		util.hudToast("点击研究技能")
---		func_detect_mian_fei_alert()
 		mSleep(1500)--弹窗需要一段时间
 	end
 end
