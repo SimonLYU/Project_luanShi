@@ -261,10 +261,11 @@ function func_search_resource_iron()
 				func_search_resource_iron()
 				return 0
 			else
-				x, y = findColorInRegionFuzzy(0x397198, 99, 1081, 434, 1194, 524, 0, 0)
+				x3, y3 = findColorInRegionFuzzy(0x397198, 99, 1071, 649, 1179, 734, 0, 0)--无补充道具的弹窗的关闭
+				x, y = findColorInRegionFuzzy(0x397198, 99, 1081, 434, 1194, 524, 0, 0)--有补充道具的弹窗的关闭
 				x1, y1 = findColorInRegionFuzzy(0x234259, 99, 328, 2063, 693, 2151, 0, 0)
 				x2, y2 = findColorInRegionFuzzy(0x494229, 99, 796, 2056, 1159, 2154, 0, 0)
-				if x > -1 and x1 > -1 and x2 > -1 then--体力不足
+				if (x > -1 or x3 > -1) and x1 > -1 and x2 > -1 then--体力不足
 					util.hudToast("体力不足,停止进攻")
 					util.clickBottomSpace()
 					mSleep(500)

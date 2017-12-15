@@ -90,6 +90,8 @@ function public.retry_internet_connect_if_needed()
 end
 
 function public.func_start_init()
+	--重置系统锁屏时间
+	resetIDLETimer()
 	--查看是否在城外
 	if public.func_detect_out_of_city() then--在城郊
 		util.hudToast("点击回城")
