@@ -13,7 +13,7 @@ function func_bang_zhu_search_qian_wang()
 		util.click(util.qianWangXposCenter,y)
 		STEP_bang_zhu = 2
 	else
-	util.hudToast("当前无需宝藏帮助")
+		util.hudToast("当前无需宝藏帮助")
 		STEP_bang_zhu = util.ERROR_CODE
 	end
 end
