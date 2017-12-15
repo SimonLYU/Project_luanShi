@@ -40,7 +40,6 @@ end
 
 function func_click_bing_ying()
 		x, y = findColorInRegionFuzzy(0x30e619, 99, bing_ying_xPos1[_G["current_device"]], bing_ying_yPos1[_G["current_device"]], bing_ying_xPos2[_G["current_device"]], bing_ying_yPos2[_G["current_device"]], 0, 0)
---		util.xylog(x,y)
 		if x > -1 then
 			util.click(bing_ying_center_x[_G["current_device"]],bing_ying_center_y[_G["current_device"]])
 			mSleep(500)

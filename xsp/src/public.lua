@@ -90,6 +90,12 @@ function public.retry_internet_connect_if_needed()
 end
 
 function public.func_start_init()
+	--查看是否在城外
+	if public.func_detect_out_of_city() then--在城郊
+		util.hudToast("点击回城")
+		util.click(125,2125)--回城
+		mSleep(2000)
+	end
 	--先关掉菜单
 	util.closeMenuIfNecessary()
 	--好友邀请弹窗
@@ -103,7 +109,7 @@ function public.func_start_init()
 		attack.func_detectAttack()
 		mSleep(500)
 	end
-	--查看是否在城外
+		--再检查一次是否在城外(在城外被攻击的时候,闪烁的红色会影响城外的判断,所以等被打检测结束之后再做一次城外检测)
 	if public.func_detect_out_of_city() then--在城郊
 		util.hudToast("点击回城")
 		util.click(125,2125)--回城

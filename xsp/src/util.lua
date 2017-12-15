@@ -40,10 +40,12 @@ dialog(x..","..y)
 end
 
 function util.pullMenuToBottom()
-	util.move(130,1600,130,500)
-	mSleep(500)
-	util.move(130,1600,130,500)
-	mSleep(500)
+	util.move(250,1500,250,600)
+	mSleep(1000)
+--	util.move(130,1600,130,500)
+--	mSleep(500)
+--	util.move(130,1600,130,500)
+--	mSleep(500)
 end
 
 function util.closeMenuIfNecessary()

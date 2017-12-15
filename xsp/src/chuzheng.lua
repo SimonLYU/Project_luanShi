@@ -18,19 +18,18 @@ function func_click_chu_zheng()
 
 	util.click(x,y)
 	chuzheng.STEP_chu_zheng = 2
---	currentDuiLie = 1
 	util.hudToast("点击队列"..currentDuiLie)
+	mSleep(500)
 	return 0
 	else
 		x, y = findColorInRegionFuzzy(0x1d72b5, 80, 750, 1715, 870, 1755, 0, 0)
 		if x > -1 then
-		--队列二
-
-		util.click(x,y)
-		chuzheng.STEP_chu_zheng = 2
---		currentDuiLie = 2
-		util.hudToast("点击队列"..currentDuiLie)
-		return 0
+			--队列二
+			util.click(x,y)
+			chuzheng.STEP_chu_zheng = 2
+			util.hudToast("点击队列"..currentDuiLie)
+			mSleep(500)
+			return 0
 		else
 		--移动两次后寻找队列三和四
 			util.pullMenuToBottom()
@@ -40,6 +39,7 @@ function func_click_chu_zheng()
 				util.click(x,y)
 				chuzheng.STEP_chu_zheng = 2
 				util.hudToast("点击队列"..currentDuiLie)
+				mSleep(500)
 				return 0
 			else
 				x, y = findColorInRegionFuzzy(0x248ed3, 80, 750, 537, 870, 590, 0, 0)
@@ -48,6 +48,7 @@ function func_click_chu_zheng()
 					util.click(x,y)
 					chuzheng.STEP_chu_zheng = 2
 					util.hudToast("点击队列"..currentDuiLie)
+					mSleep(500)
 					return 0
 				else
 					x, y = findColorInRegionFuzzy(0x248ed3, 80, 750, 470, 870, 500, 0, 0)
@@ -56,6 +57,7 @@ function func_click_chu_zheng()
 						util.click(x,y)
 						chuzheng.STEP_chu_zheng = 2
 						util.hudToast("点击队列"..currentDuiLie)
+						mSleep(500)
 						return 0
 					else
 						--nothing
@@ -65,6 +67,27 @@ function func_click_chu_zheng()
 					end
 				end
 			end
+		end
+	end
+end
+
+function search_bar_is_shown()--返回值0表示正常,1表示异常在城外,2表示异常在城内
+--todo
+	x1, y1 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
+	x, y = findColorInRegionFuzzy(0xfff2b5, 99, 140, 1920, 210, 1980, 0, 0)
+	x2, y2 = findColorInRegionFuzzy(0xfff0a9, 99, 753, 1920, 825, 1980, 0, 0)
+	x3, y3 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
+	x4, y4 = findColorInRegionFuzzy(0x248ad3, 99, 444, 2096, 794, 2175, 0, 0)
+--	util.xylog(x,x1)
+--		util.xylog(x2,x3)
+--			util.xylog(x4,000)
+	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 then--如果发现这些特征,那么不该继续去搜索了
+		return 0
+	else
+		if public.func_detect_out_of_city() then
+			return 1
+		else
+			return 2
 		end
 	end
 end
@@ -120,6 +143,17 @@ function func_search_resource_iron()
 		func_search_resource_iron()
 		return 0
 	elseif STEP_search_resource == 2 then
+		if search_bar_is_shown() == 1 then--异常 城外
+			util.hudToast("城外位置出现异常状况,跳过")
+			STEP_search_resource = 9
+			func_search_resource_iron()
+			return 0
+		elseif search_bar_is_shown() == 2 then--异常 城内
+			util.hudToast("城内位置出现异常状况,跳过")
+			STEP_search_resource = util.ERROR_CODE
+			func_search_resource_iron()
+			return 0
+		end
 		util.hudToast("重置等级")
 		if NEED_research == 1 then
 			--touch -
@@ -274,8 +308,8 @@ function func_search_resource_iron()
 end
 
 function chuzheng.func_chu_zheng()
-max_level = _G["CONFIG_max_level"]
-search_level = _G["CONFIG_search_level"] 
+	max_level = _G["CONFIG_max_level"]
+	search_level = _G["CONFIG_search_level"] 
 	mSleep(500)
 	if(chuzheng.STEP_chu_zheng == 0) then
 		--打开总览
@@ -286,7 +320,6 @@ search_level = _G["CONFIG_search_level"]
 		return 0
 	elseif(chuzheng.STEP_chu_zheng == 1) then
 		--找出征蓝色按钮
-
 		func_click_chu_zheng()
 		chuzheng.func_chu_zheng()
 		return 0
