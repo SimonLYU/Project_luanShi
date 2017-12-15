@@ -15,7 +15,6 @@ function func_click_chu_zheng()
 	x, y = findColorInRegionFuzzy(0x248ad4, 80, 750, 1630, 870, 1675, 0, 0)
 	if x > -1 then
 	--队列一
-
 	util.click(x,y)
 	chuzheng.STEP_chu_zheng = 2
 	util.hudToast("点击队列"..currentDuiLie)
@@ -31,7 +30,7 @@ function func_click_chu_zheng()
 			mSleep(500)
 			return 0
 		else
-		--移动两次后寻找队列三和四
+			--移动两次后寻找队列三和四
 			util.pullMenuToBottom()
 			x, y = findColorInRegionFuzzy(0x248ed3, 80, 750, 630, 870, 670, 0, 0)
 			if x > -1 then
@@ -72,15 +71,11 @@ function func_click_chu_zheng()
 end
 
 function search_bar_is_shown()--返回值0表示正常,1表示异常在城外,2表示异常在城内
---todo
 	x1, y1 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
 	x, y = findColorInRegionFuzzy(0xfff2b5, 99, 140, 1920, 210, 1980, 0, 0)
 	x2, y2 = findColorInRegionFuzzy(0xfff0a9, 99, 753, 1920, 825, 1980, 0, 0)
 	x3, y3 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
 	x4, y4 = findColorInRegionFuzzy(0x248ad3, 99, 444, 2096, 794, 2175, 0, 0)
---	util.xylog(x,x1)
---		util.xylog(x2,x3)
---			util.xylog(x4,000)
 	if x > -1 and x1 > -1 and x2 > -1 and x3 > -1 and x4 > -1 then--如果发现这些特征,那么不该继续去搜索了
 		return 0
 	else
@@ -157,13 +152,11 @@ function func_search_resource_iron()
 		util.hudToast("重置等级")
 		if NEED_research == 1 then
 			--touch -
-
 			for i=1,max_level,1 do
 				util.click(176,1946)
 				mSleep(50)
 			end
 			--touch +
-
 			for i=1,search_level,1 do
 				util.click(791,1946)
 				mSleep(50)
@@ -174,7 +167,6 @@ function func_search_resource_iron()
 		return 0
 	elseif STEP_search_resource == 3 then
 		--touch blue search
-
 		util.hudToast("开始寻找")
 		util.click(618,2131)
 		mSleep(1000)
@@ -205,13 +197,11 @@ function func_search_resource_iron()
 		end
 	elseif STEP_search_resource == 5 then
 		--touch center resource
-
 		util.hudToast("点击找到的资源")
 		util.click(626,1086)
 		mSleep(1000)
 		if public.func_get_current_chu_zheng_config() == 0 then
 			STEP_search_resource = 10 --打怪
-
 		else
 			STEP_search_resource = 6
 		end
@@ -275,7 +265,6 @@ function func_search_resource_iron()
 				x1, y1 = findColorInRegionFuzzy(0x234259, 99, 328, 2063, 693, 2151, 0, 0)
 				x2, y2 = findColorInRegionFuzzy(0x494229, 99, 796, 2056, 1159, 2154, 0, 0)
 				if x > -1 and x1 > -1 and x2 > -1 then--体力不足
-
 					util.hudToast("体力不足,停止进攻")
 					util.clickBottomSpace()
 					mSleep(500)
@@ -325,13 +314,11 @@ function chuzheng.func_chu_zheng()
 		return 0
 	elseif(chuzheng.STEP_chu_zheng == 2) then
 		--采矿
-
 		func_search_resource_iron()
 		chuzheng.func_chu_zheng()
 		return 0
 	elseif(chuzheng.STEP_chu_zheng == util.ERROR_CODE) then
 	end
-		
 	public.func_close_zong_lan()
 	chuzheng.STEP_chu_zheng = 0
 end
