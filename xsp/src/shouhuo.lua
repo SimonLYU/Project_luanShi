@@ -16,7 +16,7 @@ function fucn_pull_to_zuo_xia()
 	mSleep(3000)
 	--左
 	util.hudToast("屏幕定位到城内左下角")
-	for i = 1,3,1 do
+	for i = 1,1,1 do
 		util.move(260,1290,930,1290)
 		mSleep(200)
 		util.move(260,1530,930,1530)
@@ -26,7 +26,7 @@ function fucn_pull_to_zuo_xia()
 	end
 	mSleep(500)
 	--下
-	for i = 1,3,1 do
+	for i = 1,1,1 do
 		util.move(300,1600,300,500)
 		mSleep(200)
 		util.move(600,1600,600,500)
