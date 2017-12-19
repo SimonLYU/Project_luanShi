@@ -107,7 +107,16 @@ function util.hudToast(toastInfo)
 end
 
 function util.mySleep(sleepTime)
+if _G["CONFIG_chu_speed"] == 0 then
+	mSleep(sleepTime)
+elseif _G["CONFIG_chu_speed"] == 1 then
+	mSleep(sleepTime * 1.3)
+elseif _G["CONFIG_chu_speed"] == 2 then
 	mSleep(sleepTime * 1.75)
+else
+	mSleep(sleepTime * 1.75)
+end
+	
 end
 
 return util

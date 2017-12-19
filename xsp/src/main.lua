@@ -55,7 +55,7 @@ function configUI()
 				["views"] = {
 					{
 						["type"] = "Label",
-						["text"] = "tip:没有做屏幕适配,只支持iphone7Plus/6Plus/6sPlus,更多功能即将上线",
+						["text"] = "tip:请将模拟器分辨率调至:1242*2208",
 						["size"] = 25,
 						["align"] = "left",
 						["color"] = "255,108,88",
@@ -66,6 +66,27 @@ function configUI()
 						["size"] = 25,
 						["align"] = "left",
 						["color"] = "255,108,88",
+					},
+					{
+						["type"] = "Label",
+						["text"] = "运行速度",
+						["size"] = 40,
+						["align"] = "left",
+						["color"] = "255,108,88",
+					},
+					{
+						["type"] = "Label",
+						["text"] = "根据设备或模拟器卡顿成都选择",
+						["size"] = 25,
+						["align"] = "left",
+						["color"] = "255,108,88",
+					},
+					{
+						["type"] = "RadioGroup",
+						["id"] = "RadioGroupSpeed",
+						["list"] = "快速,中速,慢速",
+						["select"] = "2"	,
+						["color"] = "255,255,255",
 					},
 					{
 						["type"] = "Label",
@@ -391,6 +412,7 @@ function main()
 	_G["CONFIG_attack"] = 0--检测被打默认为关闭
 	_G["CONFIG_mian_zhan_pai"] = tonumber(results["ComboBoxMianZhanPai"])
 	_G["CONFIG_mian_zhan_pai_yuan_bao"] = tonumber(results["ComboBoxMianZhanPaiYuanBao"])
+	_G["CONFIG_chu_speed"]  = tonumber(results["RadioGroupSpeed"])--快速,中速,慢速
 	--点击确认返回1, 取消返回0
 	if ret == 1 then
 		--results 返回以id为key的Map类型数据,返回值为字符串
