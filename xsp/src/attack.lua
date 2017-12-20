@@ -14,11 +14,13 @@ search_count = 0
 attack_times = 0
 attack_resource_times = 0
 
+is_on_fire = 0
+
 --step 1
 function detectAttackIcon()
-	x, y = findColorInRegionFuzzy(0xad2f15, 90, 1086, 1605, 1233, 1729, 0, 0)
+	x, y = findColorInRegionFuzzy(0xad2f15, 90, 1086 , 1605 - (163 *  is_on_fire), 1233, 1729 - (163 *  is_on_fire), 0, 0)
 	if x > -1 then
-		util.click(1160,1671)
+		util.click(1160,1671 - 163 *  is_on_fire)
 		util.hudToast("查看行军记录")
 		STEP_attack = 2      
 		return 0
@@ -174,12 +176,23 @@ function subfunc_main()
 end
 
 function lookDetail()	
+	x, y = findColorInRegionFuzzy(0xa0410b, 99, 588, 2078, 655, 2133, 0, 0)
+	if x > -1 then--城池被攻破
+		mSleep(300)
+		is_on_fire = 1
+		STEP_attack = 3
+		util.click(100,151)--关闭燃烧窗口
+		util.hudToast("城池在燃烧!")
+		mSleep(300)
+		return 0
+	end
+	
 	util.click(932,2103)--先全部忽略,免得渐变红色影响判断
 	mSleep(200)
 	util.click(916,1288)
 	mSleep(500)
-	x1, y1 = findColorInRegionFuzzy(0xa57940, 80, search_x1 + search_count *search_space, search_y1 + search_count *search_space, search_x2 + search_count *search_space, search_y2 + search_count *search_space, 0, 0)
-	x, y = findColorInRegionFuzzy(0xfdfbf9, 80, search_x1 + search_count *search_space, search_y1 + search_count *search_space, search_x2 + search_count *search_space, search_y2 + search_count *search_space, 0, 0)
+	x1, y1 = findColorInRegionFuzzy(0xa57940, 80, search_x1 , search_y1 + search_count *search_space, search_x2 , search_y2 + search_count *search_space, 0, 0)
+	x, y = findColorInRegionFuzzy(0xfdfbf9, 80, search_x1 , search_y1 + search_count *search_space, search_x2 , search_y2 + search_count *search_space, 0, 0)
 	if x > -1 and x1 > -1 then
 		util.click(x,y)
 		util.hudToast("点击查看第"..(search_count + 1).."条行军信息")
@@ -203,7 +216,7 @@ function moveToZuoShang()
 	util.move(300,500,300,1600)
 	mSleep(200)
 		
-		STEP_attack = 1
+	STEP_attack = 1
 end
 
 function attack.func_detectAttack()
@@ -222,12 +235,17 @@ function attack.func_detectAttack()
 		search_count = search_count + 1
 		attack.func_detectAttack()
 		return 0
+	elseif STEP_attack == 3 then --城池被攻破的情况
+		STEP_attack = 0 
+		attack.func_detectAttack()
+		return 0
 	elseif STEP_attack == util.ERROR_CODE then
 	end
 	util.hudToast("检测被攻击结束")
 	util.closeMenuIfNecessary()
 	STEP_attack = 0
 	search_count = 0
+	is_on_fire = 0
 end
 
 return attack
