@@ -72,11 +72,11 @@ end
 
 function search_bar_is_shown()--返回值0表示正常,1表示异常在城外,2表示异常在城内
 --todo
-	x1, y1 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
-	x, y = findColorInRegionFuzzy(0xfff2b5, 99, 140, 1920, 210, 1980, 0, 0)
-	x2, y2 = findColorInRegionFuzzy(0xfff0a9, 99, 753, 1920, 825, 1980, 0, 0)
-	x3, y3 = findColorInRegionFuzzy(0x434e80, 99, 140, 1920, 210, 1980, 0, 0)
-	x4, y4 = findColorInRegionFuzzy(0x248ad3, 99, 444, 2096, 794, 2175, 0, 0)
+	x1, y1 = findColorInRegionFuzzy(0x434e80, 95, 140, 1920, 210, 1980, 0, 0)
+	x, y = findColorInRegionFuzzy(0xfff2b5, 95, 140, 1920, 210, 1980, 0, 0)
+	x2, y2 = findColorInRegionFuzzy(0xfff0a9, 95, 753, 1920, 825, 1980, 0, 0)
+	x3, y3 = findColorInRegionFuzzy(0x434e80, 95, 140, 1920, 210, 1980, 0, 0)
+	x4, y4 = findColorInRegionFuzzy(0x248ad3, 95, 444, 2096, 794, 2175, 0, 0)
 --	util.xylog(x,x1)
 --		util.xylog(x2,x3)
 --			util.xylog(x4,000)
@@ -187,9 +187,9 @@ function func_search_resource_iron()
 			func_search_resource_iron()
 			return 0
 		end
-		x, y = findColorInRegionFuzzy(0x9d8240, 99, 444, 1246, 802, 1326, 0, 0)
-		x1, y1 = findColorInRegionFuzzy(0x1b1a1d, 99, 444, 1100, 802, 1200, 0, 0)
-		x2, y2 = findColorInRegionFuzzy(0x123952, 99, 493, 2103, 737, 2147, 0, 0)--底部模糊的蓝色搜索按钮
+		x, y = findColorInRegionFuzzy(0x9d8240, 95, 444, 1246, 802, 1326, 0, 0)
+		x1, y1 = findColorInRegionFuzzy(0x1b1a1d, 95, 444, 1100, 802, 1200, 0, 0)
+		x2, y2 = findColorInRegionFuzzy(0x123952, 95, 493, 2103, 737, 2147, 0, 0)--底部模糊的蓝色搜索按钮
 		if (x > -1 and x1 > -1 and x2 > -1) then--发现弹窗
 			util.click(625,1288)
 			STEP_search_resource = 2
@@ -247,8 +247,8 @@ function func_search_resource_iron()
 			func_search_resource_iron()
 			return 0
 		end
-		x, y = findColorInRegionFuzzy(0xa98e4a, 99, 739, 1253, 1074, 1321, 0, 0)
-		x1, y1 = findColorInRegionFuzzy(0x2888c8, 99, 152, 1253, 507, 1321, 0, 0)
+		x, y = findColorInRegionFuzzy(0xa98e4a, 95, 739, 1253, 1074, 1321, 0, 0)
+		x1, y1 = findColorInRegionFuzzy(0x2888c8, 95, 152, 1253, 507, 1321, 0, 0)
 		if x > -1 and x1 > -1 then--发现弹窗
 			util.click(330,1292)
 			NEED_research = 0
@@ -257,8 +257,8 @@ function func_search_resource_iron()
 			func_search_resource_iron()
 			return 0
 		else
-			x, y = findColorInRegionFuzzy(0x9b803b, 99, 448, 1244, 787, 1329, 0, 0)
-			x1, y1 = findColorInRegionFuzzy(0x1b1a1d, 99, 152, 1134, 507, 1216, 0, 0)
+			x, y = findColorInRegionFuzzy(0x9b803b, 95, 448, 1244, 787, 1329, 0, 0)
+			x1, y1 = findColorInRegionFuzzy(0x1b1a1d, 95, 152, 1134, 507, 1216, 0, 0)
 			if (x > -1 and x1 > -1) then--重复行军弹窗
 				util.click(616,1286)
 				util.mySleep(200)
@@ -270,10 +270,10 @@ function func_search_resource_iron()
 				func_search_resource_iron()
 				return 0
 			else
-				x3, y3 = findColorInRegionFuzzy(0x397198, 99, 1071, 649, 1179, 734, 0, 0)--无补充道具的弹窗的关闭
-				x, y = findColorInRegionFuzzy(0x397198, 99, 1081, 434, 1194, 524, 0, 0)--有补充道具的弹窗的关闭
-				x1, y1 = findColorInRegionFuzzy(0x234259, 99, 328, 2063, 693, 2151, 0, 0)
-				x2, y2 = findColorInRegionFuzzy(0x494229, 99, 796, 2056, 1159, 2154, 0, 0)
+				x3, y3 = findColorInRegionFuzzy(0x397198, 95, 1071, 649, 1179, 734, 0, 0)--无补充道具的弹窗的关闭
+				x, y = findColorInRegionFuzzy(0x397198, 95, 1081, 434, 1194, 524, 0, 0)--有补充道具的弹窗的关闭
+				x1, y1 = findColorInRegionFuzzy(0x234259, 95, 328, 2063, 693, 2151, 0, 0)
+				x2, y2 = findColorInRegionFuzzy(0x494229, 95, 796, 2056, 1159, 2154, 0, 0)
 				if (x > -1 or x3 > -1) and x1 > -1 and x2 > -1 then--体力不足
 
 					util.hudToast("体力不足,停止进攻")
