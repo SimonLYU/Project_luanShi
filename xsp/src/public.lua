@@ -17,6 +17,7 @@ function public.func_open_zong_lan()
 	x, y = findColorInRegionFuzzy(0x171a1d, 95, 20, 1000, 70, 1130, 0, 0)
 	if x > -1 then
 		util.clickBottomSpace()
+		util.closeMenuIfNecessary()
 		public.func_open_zong_lan()
 		return 1
 	else
