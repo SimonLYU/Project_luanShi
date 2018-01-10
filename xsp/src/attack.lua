@@ -18,13 +18,16 @@ is_on_fire = 0
 
 --step 1
 function detectAttackIcon()
-	x, y = findColorInRegionFuzzy(0xad2f15, 90, 1086 , 1605 - (163 *  is_on_fire), 1233, 1729 - (163 *  is_on_fire), 0, 0)
-	if x > -1 then
-		util.click(1160,1671 - 163 *  is_on_fire)
-		util.hudToast("查看行军记录")
-		STEP_attack = 2      
-		return 0
+	for i=0,1,1 do
+		x, y = findColorInRegionFuzzy(0xad2f15, 90, 1086 , 1605 - (163 *  (is_on_fire + i)), 1233, 1729 - (163 *  (is_on_fire + i)), 0, 0)
+		if x > -1 then
+			util.click(1160,1671 - 163 *  (is_on_fire + i))
+			util.hudToast("查看行军记录")
+			STEP_attack = 2      
+			return 0
+		end
 	end
+	
 	STEP_attack = util.ERROR_CODE
 	return 0
 end
