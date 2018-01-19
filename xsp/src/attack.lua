@@ -71,6 +71,7 @@ function subfunc_click_mu_biao()
 end
 --sub step 2
 function subfunc_click_zeng_yi()
+	mSleep(500)
 	util.click(904,1020)--撤军和增益
 	mSleep(500)
 	x, y = findColorInRegionFuzzy(0x314c70, 99, 10, 100, 230, 230, 0, 0)
