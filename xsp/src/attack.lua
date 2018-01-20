@@ -65,6 +65,7 @@ function subfunc_click_zuo_biao()
 end
 --sub step 1
 function subfunc_click_mu_biao()
+	mSleep(1000)--1.5秒延迟,因为出城
 	util.click(617,1087)
 	util.hudToast("点击被攻打的目标")
 	STEP_sub_attack = 2
